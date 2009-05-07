@@ -1,0 +1,77 @@
+<!-- $Id$ -->
+
+
+<!--
+  - JCCL XML Beans DTD, version 1.0
+  - XML documents that conform to this DTD should declare the following doctype:
+  - <!DOCTYPE beans PUBLIC "-//JCCL//DTD FLATFILE//EN" "http://www.indexoutofbounds.com/dtd/jccl.dtd">
+-->
+
+<!-- Top level node, wraps everything in jccl. -->
+<!ELEMENT jccl 
+   (flatfile*)
+>
+
+<!--Flat file node -->
+<!ELEMENT flatfile
+   (record+)
+>
+
+<!--dataloc defines where the COBOL data file lives.  This is optional.-->
+<!ATTLIST flatfile dataloc CDATA #IMPLIED >
+
+<!--Performs some sainty checks on the configuration.  Usually a good thing. -->
+<!ATTLIST flatfile file-sanity-check  (true | false) "true" >
+
+<!-- Some name of the flatfile bean -->
+<!ATTLIST flatfile id ID #REQUIRED >
+
+<!-- Allows or disallows modification of the parent and children beans at runtime. -->
+<!ATTLIST flatfile ismutable (true | false) "false" >
+
+<!--Record node -->
+<!ELEMENT record
+   (field*)
+>
+<!-- Name of this record. -->
+<!ATTLIST record id ID #REQUIRED >
+
+<!-- Determines if we translate this value or not. -->
+<!ATTLIST record istranslateable  (true | false) "true">
+
+<!-- Determines if we keep the original record data or not. -->
+<!ATTLIST record keep-record-data (true | false) "false" >
+
+<!-- Record-size in bytes. -->
+<!ATTLIST record record-size CDATA #REQUIRED >
+
+<!-- Total bytes of this record that we should parse. -->
+<!ATTLIST record total-records-bytes-size CDATA "EOF">
+
+<!-- Field node -->
+<!ELEMENT field
+   (field?)
+>
+
+<!-- Field name -->
+<!ATTLIST field name ID #REQUIRED >
+
+<!-- Determines if we process this field or skip it. -->
+<!ATTLIST field isprocessable (true | false) "true" >
+
+<!-- Offset, in bytes, from the start of this record to the start-location of this
+    field.  Optional if all elements are defined and the sequence is correct.-->
+<!ATTLIST field offset CDATA "0" >
+
+<!-- The numeric scale of this value.  Only applies for true Number types. -->
+<!ATTLIST field scale CDATA "0" >
+
+<!-- Defines the field sequence/order for this record.  This determines which field
+    is translated when.  No need to express offset is all elements are defined. -->
+<!ATTLIST field sequence CDATA #REQUIRED >
+
+<!-- Size, in bytes, of this field. -->
+<!ATTLIST field size CDATA #REQUIRED >
+
+<!-- Type of field determines the translation algorithm. -->
+<!ATTLIST field type  (PACKED | DISPLAY | NUMERIC | SIGNEDNUMERIC) #REQUIRED >
