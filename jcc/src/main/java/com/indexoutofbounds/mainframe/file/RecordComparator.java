@@ -37,8 +37,13 @@ import java.util.Comparator;
 public class RecordComparator implements Comparator {
 
 	private String fieldkey = "";
+	
+        public RecordComparator() {
+                super();
+        }
 
 	public RecordComparator(String fieldkey) {
+                super();
 		this.fieldkey = fieldkey;
 	}
 
@@ -46,8 +51,8 @@ public class RecordComparator implements Comparator {
 
 		if ((obj1 != null || obj1 instanceof Record) && (obj2 != null || obj2 instanceof Record)) {
 			
-			Field col1 = ((Record) obj1).getFieldByName(fieldkey);
-			Field col2 = ((Record) obj2).getFieldByName(fieldkey);
+			Field col1 = ((Record) obj1).getFieldByName(getFieldkey());
+			Field col2 = ((Record) obj2).getFieldByName(getFieldkey());
 			
 			return (col1 != null && col2 != null) ? col1.getValue().compareTo(col2.getValue()) : 0;
 		}
