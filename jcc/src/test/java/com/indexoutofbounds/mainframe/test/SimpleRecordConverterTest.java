@@ -3,18 +3,15 @@ package com.indexoutofbounds.mainframe.test;
 
 import junit.framework.TestCase;
 
-import com.indexoutofbounds.mainframe.converter.IRecordConverter;
-import com.indexoutofbounds.mainframe.converter.impl.NumericConversionUtils;
-import com.indexoutofbounds.mainframe.converter.impl.SimpleCOBOLToAsciiRecordConverter;
-import com.indexoutofbounds.mainframe.exception.MainFrameConversionException;
-import com.indexoutofbounds.mainframe.file.Record;
+import org.junit.Test;
+
 import com.indexoutofbounds.mainframe.file.layout.FileRecordFieldLayout;
 import com.indexoutofbounds.mainframe.file.layout.FileRecordLayout;
-import com.indexoutofbounds.mainframe.file.layout.FlatFileLayout;
 import com.indexoutofbounds.mainframe.file.layout.MetaDataType;
 
 public class SimpleRecordConverterTest extends TestCase {
 	
+	@Test
 	public void testConvertRuralRoute() {
 
 		FileRecordLayout recordlayout = new FileRecordLayout(370, 37000, "Rural Route Output Record");

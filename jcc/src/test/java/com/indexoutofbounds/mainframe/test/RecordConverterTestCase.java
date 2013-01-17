@@ -1,5 +1,7 @@
 package com.indexoutofbounds.mainframe.test;
 
+import org.junit.Test;
+
 import com.indexoutofbounds.AbstractBasicTestCase;
 import com.indexoutofbounds.mainframe.converter.IRecordConverter;
 
@@ -20,7 +22,8 @@ public class RecordConverterTestCase extends AbstractBasicTestCase {
         conv = null;
     }    
     
+    @Test
     public void testFoo() throws Exception {
-        
+        //fail("Not implemented");
     }
 }

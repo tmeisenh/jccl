@@ -1,5 +1,7 @@
 package com.indexoutofbounds.mainframe.test;
 
+import org.junit.Test;
+
 import com.indexoutofbounds.AbstractBasicTestCase;
 import com.indexoutofbounds.mainframe.charsets.ASCIICharset;
 import com.indexoutofbounds.mainframe.charsets.Charset;
@@ -30,7 +32,8 @@ public class CobolToAsciiConverterTestCase extends AbstractBasicTestCase {
         conv = null;
     }
     
+    @Test
     public void testFoo() throws Exception {
-        
+        //fail("Not implemented");
     }
 }

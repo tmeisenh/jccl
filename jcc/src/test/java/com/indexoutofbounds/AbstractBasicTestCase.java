@@ -19,11 +19,14 @@ package com.indexoutofbounds;
 
 import java.util.Properties;
 
+import junit.framework.TestCase;
+
 import org.apache.log4j.PropertyConfigurator;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
 
 import com.indexoutofbounds.util.PropertiesUtil;
-
-import junit.framework.TestCase;
 
 /**
  * Configures logging.
@@ -31,6 +34,7 @@ import junit.framework.TestCase;
  * @author Travis B. Meisenheimer
  * @version $Id$
  */
+@Ignore
 public abstract class AbstractBasicTestCase extends TestCase {
     
     public AbstractBasicTestCase() {
@@ -46,6 +50,7 @@ public abstract class AbstractBasicTestCase extends TestCase {
      *
      * @see #onSetUp()
      */
+    @Before
     protected final void setUp() throws Exception {
         Properties p = PropertiesUtil.getConfigProperties("log4j.properties");
         //p.putAll(PropertiesUtil.getConfigProperties("commons-logging.properties"));
@@ -67,6 +72,7 @@ public abstract class AbstractBasicTestCase extends TestCase {
      *
      * @see #onTearDown()
      */
+    @After
     protected final void tearDown() throws Exception {
         onTearDown();
     }
@@ -117,6 +123,7 @@ public abstract class AbstractBasicTestCase extends TestCase {
     protected final void assertEqualsByteArray(byte[] a, byte[] b) {
         assertEqualsByteArray(null, a, b);
     }
+    
     protected final void assertEqualsByteArray(String message, byte[] a, byte[] b) {
         
         if (a.length != b.length) {

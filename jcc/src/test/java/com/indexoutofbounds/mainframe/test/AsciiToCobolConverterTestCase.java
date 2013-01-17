@@ -1,5 +1,7 @@
 package com.indexoutofbounds.mainframe.test;
 
+import org.junit.Test;
+
 import com.indexoutofbounds.AbstractBasicTestCase;
 import com.indexoutofbounds.mainframe.charsets.ASCIICharset;
 import com.indexoutofbounds.mainframe.charsets.Charset;
@@ -32,6 +34,7 @@ public class AsciiToCobolConverterTestCase extends AbstractBasicTestCase {
         conv = null;
     }
 
+    @Test
     public void testConvertStrings() throws Exception {
         
         // test perfect match
@@ -61,6 +64,7 @@ public class AsciiToCobolConverterTestCase extends AbstractBasicTestCase {
      * COMP-3
      * @throws Exception
      */
+    @Test
     public void testConvertPackedNumbers() throws Exception {
 
         byte[] a3846 = conv.packIntIntoCOMP3(3846, 3, 0, true);
@@ -87,6 +91,7 @@ public class AsciiToCobolConverterTestCase extends AbstractBasicTestCase {
         assertEqualsByteArray("Testing converted bytes with known good ones", a03846, dec03846_known);        
     }
     
+    @Test
     public void testConvertDoubleNumerics() throws Exception {
         // signed numeric
         byte[] a1865 = conv.numericFromDouble(18.65, 4, 2, true);
@@ -111,6 +116,7 @@ public class AsciiToCobolConverterTestCase extends AbstractBasicTestCase {
         assertEqualsByteArray("Testing converted bytes with known good ones", unneg1865, unneg1865_known);             
     }
     
+    @Test
     public void testConvertIntNumerics() throws Exception {
         // signed numeric
         byte[] a1865 = conv.numericFromInt(1865, 4, 2, true);
