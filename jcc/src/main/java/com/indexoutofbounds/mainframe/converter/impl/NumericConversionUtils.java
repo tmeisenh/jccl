@@ -223,8 +223,7 @@ public class NumericConversionUtils extends BaseCobolUtils {
 		if(nbyte[0] == 0 & nbyte[1] == 0)
 			return nbyte[1];
 		
-		if (STRICT_TRANSLATION != 0) {
-			if (nbyte[0] != 0xF)
+		if ((STRICT_TRANSLATION != 0) && (nbyte[0] != 0xF)) {
 				throw new MainFrameConversionException(MainFrameGlobals.COBOLConversionUtils_NumericUpperNybbleLow + " , " + nbyte[0] + ":" + nbyte[1]);
 		}
 		
